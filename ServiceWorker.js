@@ -4,7 +4,7 @@ var CACHE_NAME = 'ginkobusilyesPWA-v1.0';
 
 var contentToCache = [
     './webapp/index.html',
-    './webapp/Manifest.json',
+    './pwailyes.webmanifest',
     './webapp/style.css',
     './webapp/app.js',
     './webapp/icons/icon-32.png',
