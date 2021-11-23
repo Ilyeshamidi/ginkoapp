@@ -52,7 +52,7 @@ self.addEventListener('fetch', (e) => {
         e.respondWith(caches.match(e.request));
     }
     else {
-        // Stratégie network + mise en cache, ou alors cache, ou réponse par défaut
+
         e.respondWith(fetch(e.request)
             .then((response) => {
                 return caches.open(CACHE_NAME).then((cache) => {
