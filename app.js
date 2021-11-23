@@ -16,15 +16,53 @@ document.addEventListener("DOMContentLoaded", function (_e) {
     function geoloc() {
         if ("geolocation" in navigator) {
             var btnGeoloc = document.querySelector("#bcStations .btnGeoloc");
-            btnGeoloc.classList.toggle("active");
-            // TODO
-        }
+
+                if (btnGeoloc.classList.contains("active")) {
+                    for (var station in stations) {
+                        delete stations[station].distance;
+                    }
+                    fSort = null;
+                    btnGeoloc.classList.remove("active");
+                    remplirStations();
+                    return; // on quitte le if
+                }
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    fSort = function(position, id1, id2) {
+                        var d1 = distance(stations[id1].lat, stations[id1].lon, position.coords.latitude, position.coords.longitude);
+                        var d2 = distance(stations[id2].lat, stations[id2].lon, position.coords.latitude, position.coords.longitude);
+                        return d1 - d2;
+                    }.bind(null, position);
+                    for (var sta in stations) {
+                        var st = stations[sta];
+                        st.distance = distance(st.lat, st.lon, position.coords.latitude, position.coords.longitude) / 1000;
+                        st.distance = st.distance.toFixed(2);
+                    }
+                    btnGeoloc.classList.add("active");
+                    remplirStations();
+                });
+            }
+
         else {
             alert("Votre appareil ne supporte pas la géolocalisation.");    
         }
     }
-    
-    
+    function distance(lat1, lon1, lat2, lon2) {
+        const R = 6371e3; // metres
+        const phi1 = lat1 * Math.PI/180; // φ, λ in radians
+        const phi2 = lat2 * Math.PI/180;
+        const deltaPhi = (lat2-lat1) * Math.PI/180;
+        const deltaLambda = (lon2-lon1) * Math.PI/180;
+
+        const a = Math.sin(deltaPhi/2) * Math.sin(deltaPhi/2) +
+            Math.cos(phi1) * Math.cos(phi2) *
+            Math.sin(deltaLambda/2) * Math.sin(deltaLambda/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+        const d = R * c; // in metres
+        return d;
+    }
+
+
     /******************************************************************
                             Gestion des événements 
     ******************************************************************/
