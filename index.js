@@ -5,7 +5,7 @@ var http = require('http');
 // Create a service (the app object is just a callback).
 var app = express();
 
-app.use(express.static('ginkobus-pwa'));  // <-- TODO change to set the app directory
+app.use(express.static('.'));  // <-- TODO change to set the app directory
 
 // Create an HTTP service.
 http.createServer(app).listen(process.env.PORT||3000);

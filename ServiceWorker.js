@@ -3,21 +3,21 @@
 var CACHE_NAME = 'ginkobusilyesPWA-v1.0';
 
 var contentToCache = [
-    './webapp/index.html',
+    './index.html',
     './pwailyes.webmanifest',
-    './webapp/style.css',
-    './webapp/app.js',
-    './webapp/icons/icon-32.png',
-    './webapp/icons/icon-64.png',
-    './webapp/icons/icon-96.png',
-    './webapp/icons/icon-128.png',
-    './webapp/icons/favicon.ico',
-    './webapp/icons/icon-168.png',
-    './webapp/icons/icon-180.png',
-    './webapp/icons/icon-192.png',
-    './webapp/icons/icon-256.png',
-    './webapp/icons/icon-512.png',
-    './webapp/icons/maskable_icon.png'
+    './style.css',
+    './app.js',
+    './icons/icon-32.png',
+    './icons/icon-64.png',
+    './icons/icon-96.png',
+    './icons/icon-128.png',
+    './icons/favicon.ico',
+    './icons/icon-168.png',
+    './icons/icon-180.png',
+    './icons/icon-192.png',
+    './icons/icon-256.png',
+    './icons/icon-512.png',
+    './icons/maskable_icon.png'
 ];
 
 // service worker installation
