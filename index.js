@@ -8,6 +8,6 @@ var app = express();
 app.use(express.static('.'));  // <-- TODO change to set the app directory
 
 // Create an HTTP service.
-http.createServer(app).listen(process.env.PORT||3000 );
+http.createServer(app).listen(process.env.PORT||3000);
 
 console.log("C'est parti. En attente de connexion en HTTP (port 8080)...");
